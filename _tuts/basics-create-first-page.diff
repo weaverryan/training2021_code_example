@@ -1,0 +1,34 @@
+diff --git a/config/routes.yaml b/config/routes.yaml
+index c3283aa..19d4f87 100644
+--- a/config/routes.yaml
++++ b/config/routes.yaml
+@@ -1,3 +1,3 @@
+-#index:
+-#    path: /
+-#    controller: App\Controller\DefaultController::index
++index:
++    path: /lucky/number
++    controller: App\Controller\LuckyController::number
+diff --git a/src/Controller/LuckyController.php b/src/Controller/LuckyController.php
+new file mode 100644
+index 0000000..68ab06e
+--- /dev/null
++++ b/src/Controller/LuckyController.php
+@@ -0,0 +1,17 @@
++<?php
++
++namespace App\Controller;
++
++use Symfony\Component\HttpFoundation\Response;
++
++class LuckyController
++{
++    public function number(): Response
++    {
++        $number = random_int(0, 100);
++
++        return new Response(
++            '<html><body>Lucky number: '.$number.'</body></html>'
++        );
++    }
++}

@@ -1,0 +1,35 @@
+{
+    "steps": [
+        {
+            "id": "start",
+            "name": "start",
+            "description": null
+        },
+        {
+            "id": "basics-create-first-page",
+            "name": "Basics: create first page",
+            "description": null
+        },
+        {
+            "id": "basics-max-route-wildcard",
+            "name": "Basics: {max} route wildcard",
+            "description": null
+        },
+        {
+            "id": "basics-fun-with-routes",
+            "name": "Basics: fun with routes",
+            "description": null
+        },
+        {
+            "id": "basics-install-annotations",
+            "name": "Basics: install annotations",
+            "description": null
+        },
+        {
+            "id": "basics-use-annotation-route",
+            "name": "Basics: use annotation route",
+            "description": null
+        }
+    ],
+    "sha": "dbd851a6a318f17bddb696f0a82b6f2611c160d9"
+}

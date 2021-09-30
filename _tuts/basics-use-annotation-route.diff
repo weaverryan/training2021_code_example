@@ -1,0 +1,37 @@
+diff --git a/config/routes.yaml b/config/routes.yaml
+index fbfc4dd..2aa11d4 100644
+--- a/config/routes.yaml
++++ b/config/routes.yaml
+@@ -1,6 +1,6 @@
+-index:
+-    path: /lucky/number/{max<\d+>}
+-    controller: App\Controller\LuckyController::number
+-    defaults:
+-        max: 1
+-    methods: [GET]
++#index:
++#    path: /lucky/number/{max<\d+>}
++#    controller: App\Controller\LuckyController::number
++#    defaults:
++#        max: 1
++#    methods: [GET]
+diff --git a/src/Controller/LuckyController.php b/src/Controller/LuckyController.php
+index 86825ca..0eb5a0d 100644
+--- a/src/Controller/LuckyController.php
++++ b/src/Controller/LuckyController.php
+@@ -3,10 +3,14 @@
+ namespace App\Controller;
+ 
+ use Symfony\Component\HttpFoundation\Response;
++use Symfony\Component\Routing\Annotation\Route;
+ 
+ class LuckyController
+ {
+-    public function number($max): Response
++    /**
++     * @Route("/lucky/number/{max<\d+>}")
++     */
++    public function number($max = 1): Response
+     {
+         $number = random_int(0, $max);
+ 
