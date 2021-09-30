@@ -1,0 +1,39 @@
+diff --git a/config/services.yaml b/config/services.yaml
+index e18e89e..10239c7 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -24,3 +24,5 @@ services:
+     App\Controller\LuckyController:
+         arguments:
+             $globalMinNumber: 5
++
++    App\Service\LuckyNumberGenerator:
+diff --git a/src/Controller/LuckyController.php b/src/Controller/LuckyController.php
+index 9412b90..6c23c15 100644
+--- a/src/Controller/LuckyController.php
++++ b/src/Controller/LuckyController.php
+@@ -12,11 +12,13 @@ class LuckyController extends AbstractController
+ {
+     private int $globalMinNumber;
+     private LoggerInterface $logger;
++    private LuckyNumberGenerator $luckyNumberGenerator;
+ 
+-    public function __construct(int $globalMinNumber, LoggerInterface $logger)
++    public function __construct(int $globalMinNumber, LoggerInterface $logger, LuckyNumberGenerator $luckyNumberGenerator)
+     {
+         $this->globalMinNumber = $globalMinNumber;
+         $this->logger = $logger;
++        $this->luckyNumberGenerator = $luckyNumberGenerator;
+     }
+ 
+     /**
+@@ -24,8 +26,7 @@ class LuckyController extends AbstractController
+      */
+     public function number($max = 100): Response
+     {
+-        $generator = new LuckyNumberGenerator();
+-        $number = $generator->getRandomNumber($max, $this->globalMinNumber);
++        $number = $this->luckyNumberGenerator->getRandomNumber($max, $this->globalMinNumber);
+ 
+         $this->logger->info('Generating a lucky number: {number}', [
+             'number' => $number

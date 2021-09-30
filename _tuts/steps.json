@@ -69,7 +69,32 @@
             "id": "services-register-controller-service",
             "name": "Services: register controller service",
             "description": null
+        },
+        {
+            "id": "services-inject-use-logger",
+            "name": "Services: Inject & use logger",
+            "description": null
+        },
+        {
+            "id": "services-create-luckynumbergenerator",
+            "name": "Services: Create LuckyNumberGenerator",
+            "description": null
+        },
+        {
+            "id": "services-instantiate-in-controller",
+            "name": "Services: instantiate in controller",
+            "description": null
+        },
+        {
+            "id": "services-register-generator-as-service",
+            "name": "Services: register generator as service",
+            "description": null
+        },
+        {
+            "id": "services-pass-global-min-to-construct",
+            "name": "Services: Pass global min to construct",
+            "description": null
         }
     ],
-    "sha": "106f8f75e2e4117c85c386e9ae0afeb7f5465b04"
+    "sha": "99aa8a010ffadcef21152da1594bdc47ba3e8dc6"
 }

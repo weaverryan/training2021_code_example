@@ -1,0 +1,65 @@
+diff --git a/config/services.yaml b/config/services.yaml
+index 10239c7..d4b2a0e 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -22,7 +22,8 @@ services:
+             - '../src/Tests/'
+ 
+     App\Controller\LuckyController:
+-        arguments:
+-            $globalMinNumber: 5
++        arguments: []
+ 
+     App\Service\LuckyNumberGenerator:
++        arguments:
++            $globalMinNumber: 5
+diff --git a/src/Controller/LuckyController.php b/src/Controller/LuckyController.php
+index 6c23c15..c72e76f 100644
+--- a/src/Controller/LuckyController.php
++++ b/src/Controller/LuckyController.php
+@@ -10,13 +10,11 @@ use Symfony\Component\Routing\Annotation\Route;
+ 
+ class LuckyController extends AbstractController
+ {
+-    private int $globalMinNumber;
+     private LoggerInterface $logger;
+     private LuckyNumberGenerator $luckyNumberGenerator;
+ 
+-    public function __construct(int $globalMinNumber, LoggerInterface $logger, LuckyNumberGenerator $luckyNumberGenerator)
++    public function __construct(LoggerInterface $logger, LuckyNumberGenerator $luckyNumberGenerator)
+     {
+-        $this->globalMinNumber = $globalMinNumber;
+         $this->logger = $logger;
+         $this->luckyNumberGenerator = $luckyNumberGenerator;
+     }
+@@ -26,7 +24,7 @@ class LuckyController extends AbstractController
+      */
+     public function number($max = 100): Response
+     {
+-        $number = $this->luckyNumberGenerator->getRandomNumber($max, $this->globalMinNumber);
++        $number = $this->luckyNumberGenerator->getRandomNumber($max);
+ 
+         $this->logger->info('Generating a lucky number: {number}', [
+             'number' => $number
+diff --git a/src/Service/LuckyNumberGenerator.php b/src/Service/LuckyNumberGenerator.php
+index d0a8e0f..3b99686 100644
+--- a/src/Service/LuckyNumberGenerator.php
++++ b/src/Service/LuckyNumberGenerator.php
+@@ -4,8 +4,15 @@ namespace App\Service;
+ 
+ class LuckyNumberGenerator
+ {
+-    public function getRandomNumber(int $max, int $globalMinNumber): int
++    private int $globalMinNumber;
++
++    public function __construct(int $globalMinNumber)
++    {
++        $this->globalMinNumber = $globalMinNumber;
++    }
++
++    public function getRandomNumber(int $max): int
+     {
+-        return random_int($globalMinNumber, $max);
++        return random_int($this->globalMinNumber, $max);
+     }
+ }

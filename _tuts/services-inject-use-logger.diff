@@ -1,0 +1,37 @@
+diff --git a/src/Controller/LuckyController.php b/src/Controller/LuckyController.php
+index eb90d0e..9164d4d 100644
+--- a/src/Controller/LuckyController.php
++++ b/src/Controller/LuckyController.php
+@@ -2,6 +2,7 @@
+ 
+ namespace App\Controller;
+ 
++use Psr\Log\LoggerInterface;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\Response;
+ use Symfony\Component\Routing\Annotation\Route;
+@@ -9,10 +10,12 @@ use Symfony\Component\Routing\Annotation\Route;
+ class LuckyController extends AbstractController
+ {
+     private int $globalMinNumber;
++    private LoggerInterface $logger;
+ 
+-    public function __construct(int $globalMinNumber)
++    public function __construct(int $globalMinNumber, LoggerInterface $logger)
+     {
+         $this->globalMinNumber = $globalMinNumber;
++        $this->logger = $logger;
+     }
+ 
+     /**
+@@ -22,6 +25,10 @@ class LuckyController extends AbstractController
+     {
+         $number = random_int($this->globalMinNumber, $max);
+ 
++        $this->logger->info('Generating a lucky number: {number}', [
++            'number' => $number
++        ]);
++
+         return $this->render('lucky/number.html.twig', [
+             'number' => $number,
+         ]);

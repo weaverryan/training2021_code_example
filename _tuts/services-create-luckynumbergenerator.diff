@@ -1,0 +1,17 @@
+diff --git a/src/Service/LuckyNumberGenerator.php b/src/Service/LuckyNumberGenerator.php
+new file mode 100644
+index 0000000..d0a8e0f
+--- /dev/null
++++ b/src/Service/LuckyNumberGenerator.php
+@@ -0,0 +1,11 @@
++<?php
++
++namespace App\Service;
++
++class LuckyNumberGenerator
++{
++    public function getRandomNumber(int $max, int $globalMinNumber): int
++    {
++        return random_int($globalMinNumber, $max);
++    }
++}
