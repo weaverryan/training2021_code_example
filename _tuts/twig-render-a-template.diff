@@ -1,0 +1,36 @@
+diff --git a/src/Controller/LuckyController.php b/src/Controller/LuckyController.php
+index bed32c4..2dca45c 100644
+--- a/src/Controller/LuckyController.php
++++ b/src/Controller/LuckyController.php
+@@ -2,10 +2,11 @@
+ 
+ namespace App\Controller;
+ 
++use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\Response;
+ use Symfony\Component\Routing\Annotation\Route;
+ 
+-class LuckyController
++class LuckyController extends AbstractController
+ {
+     /**
+      * @Route("/lucky/number/{max<\d+>}")
+@@ -14,8 +15,8 @@ class LuckyController
+     {
+         $number = random_int(0, $max);
+ 
+-        return new Response(
+-            '<html><body>Lucky number: '.$number.'</body></html>'
+-        );
++        return $this->render('lucky/number.html.twig', [
++            'number' => $number,
++        ]);
+     }
+ }
+diff --git a/templates/lucky/number.html.twig b/templates/lucky/number.html.twig
+new file mode 100644
+index 0000000..70ded2f
+--- /dev/null
++++ b/templates/lucky/number.html.twig
+@@ -0,0 +1 @@
++<h1>Your lucky number is {{ number }}</h1>

@@ -1,5 +1,5 @@
 diff --git a/config/routes.yaml b/config/routes.yaml
-index fbfc4dd..2aa11d4 100644
+index 7bd4e97..c580418 100644
 --- a/config/routes.yaml
 +++ b/config/routes.yaml
 @@ -1,6 +1,6 @@
@@ -7,16 +7,16 @@ index fbfc4dd..2aa11d4 100644
 -    path: /lucky/number/{max<\d+>}
 -    controller: App\Controller\LuckyController::number
 -    defaults:
--        max: 1
+-        max: 100
 -    methods: [GET]
 +#index:
 +#    path: /lucky/number/{max<\d+>}
 +#    controller: App\Controller\LuckyController::number
 +#    defaults:
-+#        max: 1
++#        max: 100
 +#    methods: [GET]
 diff --git a/src/Controller/LuckyController.php b/src/Controller/LuckyController.php
-index 86825ca..0eb5a0d 100644
+index 86825ca..bed32c4 100644
 --- a/src/Controller/LuckyController.php
 +++ b/src/Controller/LuckyController.php
 @@ -3,10 +3,14 @@
@@ -31,7 +31,7 @@ index 86825ca..0eb5a0d 100644
 +    /**
 +     * @Route("/lucky/number/{max<\d+>}")
 +     */
-+    public function number($max = 1): Response
++    public function number($max = 100): Response
      {
          $number = random_int(0, $max);
  

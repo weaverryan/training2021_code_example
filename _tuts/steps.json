@@ -29,7 +29,47 @@
             "id": "basics-use-annotation-route",
             "name": "Basics: use annotation route",
             "description": null
+        },
+        {
+            "id": "twig-install-twig",
+            "name": "Twig: Install twig",
+            "description": null
+        },
+        {
+            "id": "twig-render-a-template",
+            "name": "Twig: render a template",
+            "description": null
+        },
+        {
+            "id": "twig-base-layout",
+            "name": "Twig: base layout",
+            "description": null
+        },
+        {
+            "id": "twig-link-to-bootstrap-css",
+            "name": "Twig: link to bootstrap.css",
+            "description": null
+        },
+        {
+            "id": "twig-use-asset-function",
+            "name": "Twig: use asset() function",
+            "description": null
+        },
+        {
+            "id": "debug-install-debug",
+            "name": "Debug: install debug",
+            "description": null
+        },
+        {
+            "id": "services-add-controller-construct",
+            "name": "Services: Add controller construct",
+            "description": null
+        },
+        {
+            "id": "services-register-controller-service",
+            "name": "Services: register controller service",
+            "description": null
         }
     ],
-    "sha": "dbd851a6a318f17bddb696f0a82b6f2611c160d9"
+    "sha": "106f8f75e2e4117c85c386e9ae0afeb7f5465b04"
 }

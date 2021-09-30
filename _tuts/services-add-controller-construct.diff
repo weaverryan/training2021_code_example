@@ -1,0 +1,25 @@
+diff --git a/src/Controller/LuckyController.php b/src/Controller/LuckyController.php
+index 2dca45c..eb90d0e 100644
+--- a/src/Controller/LuckyController.php
++++ b/src/Controller/LuckyController.php
+@@ -8,12 +8,19 @@ use Symfony\Component\Routing\Annotation\Route;
+ 
+ class LuckyController extends AbstractController
+ {
++    private int $globalMinNumber;
++
++    public function __construct(int $globalMinNumber)
++    {
++        $this->globalMinNumber = $globalMinNumber;
++    }
++
+     /**
+      * @Route("/lucky/number/{max<\d+>}")
+      */
+     public function number($max = 100): Response
+     {
+-        $number = random_int(0, $max);
++        $number = random_int($this->globalMinNumber, $max);
+ 
+         return $this->render('lucky/number.html.twig', [
+             'number' => $number,
