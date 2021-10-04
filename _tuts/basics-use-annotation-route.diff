@@ -1,27 +1,41 @@
 diff --git a/config/routes.yaml b/config/routes.yaml
-index 7bd4e97..c580418 100644
+index 25f32f1..e3688a7 100644
 --- a/config/routes.yaml
 +++ b/config/routes.yaml
-@@ -1,6 +1,6 @@
--index:
+@@ -1,13 +1,13 @@
+-app_lucky_number:
 -    path: /lucky/number/{max<\d+>}
 -    controller: App\Controller\LuckyController::number
 -    defaults:
 -        max: 100
 -    methods: [GET]
-+#index:
+-
+-api_lucky_number:
+-    path: /api/lucky/number/{max<\d+>}
+-    controller: App\Controller\LuckyController::numberApi
+-    defaults:
+-        max: 100
+-    methods: [GET]
++#app_lucky_number:
 +#    path: /lucky/number/{max<\d+>}
 +#    controller: App\Controller\LuckyController::number
 +#    defaults:
 +#        max: 100
 +#    methods: [GET]
++#
++#api_lucky_number:
++#    path: /api/lucky/number/{max<\d+>}
++#    controller: App\Controller\LuckyController::numberApi
++#    defaults:
++#        max: 100
++#    methods: [GET]
 diff --git a/src/Controller/LuckyController.php b/src/Controller/LuckyController.php
-index 86825ca..bed32c4 100644
+index a2ef1c6..5d0596b 100644
 --- a/src/Controller/LuckyController.php
 +++ b/src/Controller/LuckyController.php
-@@ -3,10 +3,14 @@
- namespace App\Controller;
+@@ -4,10 +4,14 @@ namespace App\Controller;
  
+ use Symfony\Component\HttpFoundation\JsonResponse;
  use Symfony\Component\HttpFoundation\Response;
 +use Symfony\Component\Routing\Annotation\Route;
  
@@ -35,3 +49,13 @@ index 86825ca..bed32c4 100644
      {
          $number = random_int(0, $max);
  
+@@ -16,6 +20,9 @@ class LuckyController
+         );
+     }
+ 
++    /**
++     * @Route("/api/lucky/number/{max<\d+>}")
++     */
+     public function numberApi($max): Response
+     {
+         $number = random_int(0, $max);
