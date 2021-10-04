@@ -1,13 +1,13 @@
-app_lucky_number:
-    path: /lucky/number/{max<\d+>}
-    controller: App\Controller\LuckyController::number
-    defaults:
-        max: 100
-    methods: [GET]
-
-api_lucky_number:
-    path: /api/lucky/number/{max<\d+>}
-    controller: App\Controller\LuckyController::numberApi
-    defaults:
-        max: 100
-    methods: [GET]
+#app_lucky_number:
+#    path: /lucky/number/{max<\d+>}
+#    controller: App\Controller\LuckyController::number
+#    defaults:
+#        max: 100
+#    methods: [GET]
+#
+#api_lucky_number:
+#    path: /api/lucky/number/{max<\d+>}
+#    controller: App\Controller\LuckyController::numberApi
+#    defaults:
+#        max: 100
+#    methods: [GET]
