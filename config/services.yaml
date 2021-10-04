@@ -22,7 +22,3 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
             - '../src/Tests/'
-
-    App\Controller\LuckyController:
-
-    App\Service\LuckyNumberGenerator:
