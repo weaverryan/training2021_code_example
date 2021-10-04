@@ -9,12 +9,19 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LuckyController extends AbstractController
 {
+    private int $globalMinNumber;
+
+    public function __construct(int $globalMinNumber)
+    {
+        $this->globalMinNumber = $globalMinNumber;
+    }
+
     /**
      * @Route("/lucky/number/{max<\d+>}")
      */
     public function number($max = 100): Response
     {
-        $number = random_int(0, $max);
+        $number = random_int($this->globalMinNumber, $max);
 
         return $this->render('lucky/number.html.twig', [
             'number' => $number,
