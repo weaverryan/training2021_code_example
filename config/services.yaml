@@ -24,6 +24,5 @@ services:
             - '../src/Tests/'
 
     App\Controller\LuckyController:
-        arguments: []
 
     App\Service\LuckyNumberGenerator:
