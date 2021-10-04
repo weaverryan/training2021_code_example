@@ -1,0 +1,41 @@
+diff --git a/config/routes.yaml b/config/routes.yaml
+index 37426ba..25f32f1 100644
+--- a/config/routes.yaml
++++ b/config/routes.yaml
+@@ -4,3 +4,10 @@ app_lucky_number:
+     defaults:
+         max: 100
+     methods: [GET]
++
++api_lucky_number:
++    path: /api/lucky/number/{max<\d+>}
++    controller: App\Controller\LuckyController::numberApi
++    defaults:
++        max: 100
++    methods: [GET]
+diff --git a/src/Controller/LuckyController.php b/src/Controller/LuckyController.php
+index 86825ca..a2ef1c6 100644
+--- a/src/Controller/LuckyController.php
++++ b/src/Controller/LuckyController.php
+@@ -2,6 +2,7 @@
+ 
+ namespace App\Controller;
+ 
++use Symfony\Component\HttpFoundation\JsonResponse;
+ use Symfony\Component\HttpFoundation\Response;
+ 
+ class LuckyController
+@@ -14,4 +15,13 @@ class LuckyController
+             '<html><body>Lucky number: '.$number.'</body></html>'
+         );
+     }
++
++    public function numberApi($max): Response
++    {
++        $number = random_int(0, $max);
++
++        return new JsonResponse([
++            'number' => $number,
++        ]);
++    }
+ }
