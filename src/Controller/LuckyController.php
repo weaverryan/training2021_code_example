@@ -2,11 +2,12 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class LuckyController
+class LuckyController extends AbstractController
 {
     /**
      * @Route("/lucky/number/{max<\d+>}")
@@ -15,9 +16,9 @@ class LuckyController
     {
         $number = random_int(0, $max);
 
-        return new Response(
-            '<html><body>Lucky number: '.$number.'</body></html>'
-        );
+        return $this->render('lucky/number.html.twig', [
+            'number' => $number,
+        ]);
     }
 
     /**
