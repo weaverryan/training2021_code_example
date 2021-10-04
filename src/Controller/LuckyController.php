@@ -11,23 +11,21 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LuckyController extends AbstractController
 {
-    private $logger;
     private $luckyNumberGenerator;
 
-    public function __construct(LoggerInterface $logger, LuckyNumberGenerator $luckyNumberGenerator)
+    public function __construct(LuckyNumberGenerator $luckyNumberGenerator)
     {
-        $this->logger = $logger;
         $this->luckyNumberGenerator = $luckyNumberGenerator;
     }
 
     /**
      * @Route("/lucky/number/{max<\d+>}")
      */
-    public function number($max = 100): Response
+    public function number(LoggerInterface $logger, $max = 100): Response
     {
         $number = $this->luckyNumberGenerator->getRandomNumber($max);
 
-        $this->logger->info('Generating a lucky number: {number}', [
+        $logger->info('Generating a lucky number: {number}', [
             'number' => $number
         ]);
 
