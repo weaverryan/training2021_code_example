@@ -1,9 +1,9 @@
 diff --git a/config/routes.yaml b/config/routes.yaml
-index 405d245..7bd4e97 100644
+index 7ea8ba9..37426ba 100644
 --- a/config/routes.yaml
 +++ b/config/routes.yaml
 @@ -1,3 +1,6 @@
- index:
+ app_lucky_number:
 -    path: /lucky/number/{max}
 +    path: /lucky/number/{max<\d+>}
      controller: App\Controller\LuckyController::number
