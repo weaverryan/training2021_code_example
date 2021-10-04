@@ -9,10 +9,10 @@ index e18e89e..10239c7 100644
 +
 +    App\Service\LuckyNumberGenerator:
 diff --git a/src/Controller/LuckyController.php b/src/Controller/LuckyController.php
-index 9412b90..6c23c15 100644
+index 4ef6032..496a16c 100644
 --- a/src/Controller/LuckyController.php
 +++ b/src/Controller/LuckyController.php
-@@ -12,11 +12,13 @@ class LuckyController extends AbstractController
+@@ -13,11 +13,13 @@ class LuckyController extends AbstractController
  {
      private int $globalMinNumber;
      private LoggerInterface $logger;
@@ -27,7 +27,7 @@ index 9412b90..6c23c15 100644
      }
  
      /**
-@@ -24,8 +26,7 @@ class LuckyController extends AbstractController
+@@ -25,8 +27,7 @@ class LuckyController extends AbstractController
       */
      public function number($max = 100): Response
      {

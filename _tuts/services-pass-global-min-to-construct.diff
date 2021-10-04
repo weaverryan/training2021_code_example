@@ -14,10 +14,10 @@ index 10239c7..d4b2a0e 100644
 +        arguments:
 +            $globalMinNumber: 5
 diff --git a/src/Controller/LuckyController.php b/src/Controller/LuckyController.php
-index 6c23c15..c72e76f 100644
+index 496a16c..e0087b5 100644
 --- a/src/Controller/LuckyController.php
 +++ b/src/Controller/LuckyController.php
-@@ -10,13 +10,11 @@ use Symfony\Component\Routing\Annotation\Route;
+@@ -11,13 +11,11 @@ use Symfony\Component\Routing\Annotation\Route;
  
  class LuckyController extends AbstractController
  {
@@ -32,7 +32,7 @@ index 6c23c15..c72e76f 100644
          $this->logger = $logger;
          $this->luckyNumberGenerator = $luckyNumberGenerator;
      }
-@@ -26,7 +24,7 @@ class LuckyController extends AbstractController
+@@ -27,7 +25,7 @@ class LuckyController extends AbstractController
       */
      public function number($max = 100): Response
      {
