@@ -12,9 +12,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class LuckyController extends AbstractController
 {
     private int $globalMinNumber;
-    private LoggerInterface $logger;
+    private $logger;
 
-    public function __construct(int $globalMinNumber, LoggerInterface $logger)
+    public function __construct(int $globalMinNumber, $logger)
     {
         $this->globalMinNumber = $globalMinNumber;
         $this->logger = $logger;
