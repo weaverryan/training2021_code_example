@@ -11,13 +11,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LuckyController extends AbstractController
 {
-    private int $globalMinNumber;
     private LoggerInterface $logger;
     private LuckyNumberGenerator $luckyNumberGenerator;
 
-    public function __construct(int $globalMinNumber, LoggerInterface $logger, LuckyNumberGenerator $luckyNumberGenerator)
+    public function __construct(LoggerInterface $logger, LuckyNumberGenerator $luckyNumberGenerator)
     {
-        $this->globalMinNumber = $globalMinNumber;
         $this->logger = $logger;
         $this->luckyNumberGenerator = $luckyNumberGenerator;
     }
@@ -27,7 +25,7 @@ class LuckyController extends AbstractController
      */
     public function number($max = 100): Response
     {
-        $number = $this->luckyNumberGenerator->getRandomNumber($max, $this->globalMinNumber);
+        $number = $this->luckyNumberGenerator->getRandomNumber($max);
 
         $this->logger->info('Generating a lucky number: {number}', [
             'number' => $number

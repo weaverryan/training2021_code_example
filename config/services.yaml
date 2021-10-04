@@ -22,7 +22,8 @@ services:
             - '../src/Tests/'
 
     App\Controller\LuckyController:
-        arguments:
-            $globalMinNumber: 5
+        arguments: []
 
     App\Service\LuckyNumberGenerator:
+        arguments:
+            $globalMinNumber: 5

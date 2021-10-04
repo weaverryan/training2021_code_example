@@ -4,8 +4,15 @@ namespace App\Service;
 
 class LuckyNumberGenerator
 {
-    public function getRandomNumber(int $max, int $globalMinNumber): int
+    private int $globalMinNumber;
+
+    public function __construct(int $globalMinNumber)
     {
-        return random_int($globalMinNumber, $max);
+        $this->globalMinNumber = $globalMinNumber;
+    }
+
+    public function getRandomNumber(int $max): int
+    {
+        return random_int($this->globalMinNumber, $max);
     }
 }
