@@ -24,6 +24,7 @@ services:
     App\Controller\LuckyController:
         arguments:
             $logger: '@logger'
+            $luckyNumberGenerator: '@App\Service\LuckyNumberGenerator'
 
     App\Service\LuckyNumberGenerator:
         arguments:
