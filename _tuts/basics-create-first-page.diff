@@ -1,12 +1,12 @@
 diff --git a/config/routes.yaml b/config/routes.yaml
-index c3283aa..19d4f87 100644
+index c3283aa..5723438 100644
 --- a/config/routes.yaml
 +++ b/config/routes.yaml
 @@ -1,3 +1,3 @@
 -#index:
 -#    path: /
 -#    controller: App\Controller\DefaultController::index
-+index:
++app_lucky_number:
 +    path: /lucky/number
 +    controller: App\Controller\LuckyController::number
 diff --git a/src/Controller/LuckyController.php b/src/Controller/LuckyController.php
