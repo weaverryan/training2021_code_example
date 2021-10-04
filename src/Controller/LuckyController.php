@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\LuckyNumberGenerator;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -24,7 +25,8 @@ class LuckyController extends AbstractController
      */
     public function number($max = 100): Response
     {
-        $number = random_int($this->globalMinNumber, $max);
+        $generator = new LuckyNumberGenerator();
+        $number = $generator->getRandomNumber($max, $this->globalMinNumber);
 
         $this->logger->info('Generating a lucky number: {number}', [
             'number' => $number
