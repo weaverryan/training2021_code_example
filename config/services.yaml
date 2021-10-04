@@ -24,3 +24,4 @@ services:
     App\Controller\LuckyController:
         arguments:
             $globalMinNumber: 5
+            $logger: '@logger'
