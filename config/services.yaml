@@ -25,5 +25,5 @@ services:
         arguments: []
 
     App\Service\LuckyNumberGenerator:
-        arguments:
+        bind:
             $globalMinNumber: 5
