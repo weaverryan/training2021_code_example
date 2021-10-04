@@ -14,7 +14,7 @@ class LuckyController extends AbstractController
     private $logger;
     private $luckyNumberGenerator;
 
-    public function __construct($logger, LuckyNumberGenerator $luckyNumberGenerator)
+    public function __construct(LoggerInterface $logger, LuckyNumberGenerator $luckyNumberGenerator)
     {
         $this->logger = $logger;
         $this->luckyNumberGenerator = $luckyNumberGenerator;

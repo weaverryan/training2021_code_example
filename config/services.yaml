@@ -22,8 +22,7 @@ services:
             - '../src/Tests/'
 
     App\Controller\LuckyController:
-        arguments:
-            $logger: '@logger'
+        arguments: []
 
     App\Service\LuckyNumberGenerator:
         arguments:
