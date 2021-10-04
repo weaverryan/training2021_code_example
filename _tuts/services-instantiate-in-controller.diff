@@ -1,5 +1,5 @@
 diff --git a/src/Controller/LuckyController.php b/src/Controller/LuckyController.php
-index 9164d4d..9412b90 100644
+index c83af3f..4ef6032 100644
 --- a/src/Controller/LuckyController.php
 +++ b/src/Controller/LuckyController.php
 @@ -2,6 +2,7 @@
@@ -9,8 +9,8 @@ index 9164d4d..9412b90 100644
 +use App\Service\LuckyNumberGenerator;
  use Psr\Log\LoggerInterface;
  use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
- use Symfony\Component\HttpFoundation\Response;
-@@ -23,7 +24,8 @@ class LuckyController extends AbstractController
+ use Symfony\Component\HttpFoundation\JsonResponse;
+@@ -24,7 +25,8 @@ class LuckyController extends AbstractController
       */
      public function number($max = 100): Response
      {
