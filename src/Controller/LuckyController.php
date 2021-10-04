@@ -11,10 +11,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LuckyController extends AbstractController
 {
-    private LoggerInterface $logger;
+    private $logger;
     private LuckyNumberGenerator $luckyNumberGenerator;
 
-    public function __construct(LoggerInterface $logger, LuckyNumberGenerator $luckyNumberGenerator)
+    public function __construct($logger, LuckyNumberGenerator $luckyNumberGenerator)
     {
         $this->logger = $logger;
         $this->luckyNumberGenerator = $luckyNumberGenerator;
