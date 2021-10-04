@@ -4,3 +4,10 @@ app_lucky_number:
     defaults:
         max: 100
     methods: [GET]
+
+api_lucky_number:
+    path: /api/lucky/number/{max<\d+>}
+    controller: App\Controller\LuckyController::numberApi
+    defaults:
+        max: 100
+    methods: [GET]
