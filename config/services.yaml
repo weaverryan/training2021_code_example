@@ -25,5 +25,6 @@ services:
         arguments:
             $globalMinNumber: 5
             $logger: '@logger'
+            $luckyNumberGenerator: '@App\Service\LuckyNumberGenerator'
 
     App\Service\LuckyNumberGenerator:
