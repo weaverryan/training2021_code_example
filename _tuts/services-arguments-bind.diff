@@ -1,0 +1,11 @@
+diff --git a/config/services.yaml b/config/services.yaml
+index 921bb75..513b28d 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -24,5 +24,5 @@ services:
+     App\Controller\LuckyController:
+ 
+     App\Service\LuckyNumberGenerator:
+-        arguments:
++        bind:
+             $globalMinNumber: 5
