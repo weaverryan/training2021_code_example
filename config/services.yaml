@@ -24,4 +24,5 @@ services:
             - '../src/Tests/'
 
     App\Twig\AppExtension:
+        autoconfigure: false
         tags: ['twig.extension']
