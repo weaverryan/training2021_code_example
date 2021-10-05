@@ -1,0 +1,32 @@
+diff --git a/src/Twig/AppExtension.php b/src/Twig/AppExtension.php
+index 1d9ef25..5237d9c 100644
+--- a/src/Twig/AppExtension.php
++++ b/src/Twig/AppExtension.php
+@@ -2,11 +2,19 @@
+ 
+ namespace App\Twig;
+ 
++use App\Service\LuckyNumberGenerator;
+ use Twig\Extension\AbstractExtension;
+ use Twig\TwigFunction;
+ 
+ class AppExtension extends AbstractExtension
+ {
++    private LuckyNumberGenerator $generator;
++
++    public function __construct(LuckyNumberGenerator $generator)
++    {
++        $this->generator = $generator;
++    }
++
+     public function getFunctions()
+     {
+         return [
+@@ -16,6 +24,6 @@ class AppExtension extends AbstractExtension
+ 
+     public function getLuckyNumber()
+     {
+-        return 42;
++        return $this->generator->getRandomNumber(100);
+     }
+ }
