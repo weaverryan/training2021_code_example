@@ -22,3 +22,6 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
             - '../src/Tests/'
+
+    App\Twig\AppExtension:
+        autoconfigure: false
