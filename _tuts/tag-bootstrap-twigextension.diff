@@ -1,0 +1,26 @@
+diff --git a/src/Twig/AppExtension.php b/src/Twig/AppExtension.php
+index f0d0ed2..1d9ef25 100644
+--- a/src/Twig/AppExtension.php
++++ b/src/Twig/AppExtension.php
+@@ -2,7 +2,20 @@
+ 
+ namespace App\Twig;
+ 
+-class AppExtension
++use Twig\Extension\AbstractExtension;
++use Twig\TwigFunction;
++
++class AppExtension extends AbstractExtension
+ {
++    public function getFunctions()
++    {
++        return [
++            new TwigFunction('get_lucky_number', [$this, 'getLuckyNumber'])
++        ];
++    }
+ 
++    public function getLuckyNumber()
++    {
++        return 42;
++    }
+ }
