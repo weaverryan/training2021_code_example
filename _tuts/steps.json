@@ -129,7 +129,52 @@
             "id": "services-action-injection",
             "name": "Services: action injection",
             "description": null
+        },
+        {
+            "id": "delete-me-1",
+            "name": "delete me 1",
+            "description": null
+        },
+        {
+            "id": "tag-print-lucky-number-in-layout",
+            "name": "Tag: print lucky number in layout",
+            "description": null
+        },
+        {
+            "id": "tag-create-extension-class",
+            "name": "Tag: Create extension class",
+            "description": null
+        },
+        {
+            "id": "tag-register-service",
+            "name": "Tag: register service",
+            "description": null
+        },
+        {
+            "id": "tag-bootstrap-twigextension",
+            "name": "Tag: bootstrap TwigExtension",
+            "description": null
+        },
+        {
+            "id": "tag-register-tag-service",
+            "name": "Tag: register & tag service",
+            "description": null
+        },
+        {
+            "id": "tag-inject-generator",
+            "name": "Tag: inject generator",
+            "description": null
+        },
+        {
+            "id": "tag-use-autoconfigure",
+            "name": "Tag: use autoconfigure",
+            "description": null
+        },
+        {
+            "id": "tag-remove-service-entirely",
+            "name": "Tag: remove service entirely",
+            "description": null
         }
     ],
-    "sha": "73d96c544268fa395acd9091151a4590f4ad9b72"
+    "sha": "d8f3ad923dfeff7af8d91a9c0a534504c7d07b1a"
 }
