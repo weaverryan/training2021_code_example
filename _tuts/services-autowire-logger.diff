@@ -1,0 +1,26 @@
+diff --git a/config/services.yaml b/config/services.yaml
+index c9c3d7a..921bb75 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -22,8 +22,6 @@ services:
+             - '../src/Tests/'
+ 
+     App\Controller\LuckyController:
+-        arguments:
+-            $logger: '@logger'
+ 
+     App\Service\LuckyNumberGenerator:
+         arguments:
+diff --git a/src/Controller/LuckyController.php b/src/Controller/LuckyController.php
+index 6caf4cb..11ac8cf 100644
+--- a/src/Controller/LuckyController.php
++++ b/src/Controller/LuckyController.php
+@@ -14,7 +14,7 @@ class LuckyController extends AbstractController
+     private $logger;
+     private $luckyNumberGenerator;
+ 
+-    public function __construct($logger, LuckyNumberGenerator $luckyNumberGenerator)
++    public function __construct(LoggerInterface $logger, LuckyNumberGenerator $luckyNumberGenerator)
+     {
+         $this->logger = $logger;
+         $this->luckyNumberGenerator = $luckyNumberGenerator;

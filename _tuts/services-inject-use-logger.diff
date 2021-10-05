@@ -1,5 +1,14 @@
+diff --git a/config/services.yaml b/config/services.yaml
+index e18e89e..cab0f42 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -24,3 +24,4 @@ services:
+     App\Controller\LuckyController:
+         arguments:
+             $globalMinNumber: 5
++            $logger: '@logger'
 diff --git a/src/Controller/LuckyController.php b/src/Controller/LuckyController.php
-index 806958f..c83af3f 100644
+index 806958f..ed2cb5e 100644
 --- a/src/Controller/LuckyController.php
 +++ b/src/Controller/LuckyController.php
 @@ -2,6 +2,7 @@
@@ -14,10 +23,10 @@ index 806958f..c83af3f 100644
  class LuckyController extends AbstractController
  {
      private int $globalMinNumber;
-+    private LoggerInterface $logger;
++    private $logger;
  
 -    public function __construct(int $globalMinNumber)
-+    public function __construct(int $globalMinNumber, LoggerInterface $logger)
++    public function __construct(int $globalMinNumber, $logger)
      {
          $this->globalMinNumber = $globalMinNumber;
 +        $this->logger = $logger;
