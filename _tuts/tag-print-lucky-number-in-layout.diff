@@ -1,0 +1,12 @@
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index ac975f4..1be4289 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -16,5 +16,7 @@
+     </head>
+     <body>
+         {% block body %}{% endblock %}
++
++        <small>Lucky number: {{ get_lucky_number() }}</small>
+     </body>
+ </html>
