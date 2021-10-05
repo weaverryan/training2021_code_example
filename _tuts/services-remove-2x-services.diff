@@ -1,0 +1,12 @@
+diff --git a/config/services.yaml b/config/services.yaml
+index ac3e95e..ac777da 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -22,7 +22,3 @@ services:
+             - '../src/Entity/'
+             - '../src/Kernel.php'
+             - '../src/Tests/'
+-
+-    App\Controller\LuckyController:
+-
+-    App\Service\LuckyNumberGenerator:
