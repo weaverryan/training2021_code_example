@@ -1,0 +1,10 @@
+diff --git a/config/services.yaml b/config/services.yaml
+index 24b03e5..a92c061 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -23,5 +23,3 @@ services:
+             - '../src/Kernel.php'
+             - '../src/Tests/'
+ 
+-    App\Twig\AppExtension:
+-        autoconfigure: true
