@@ -1,20 +1,20 @@
 diff --git a/config/services.yaml b/config/services.yaml
-index 10239c7..d4b2a0e 100644
+index e5c518b..c5c8042 100644
 --- a/config/services.yaml
 +++ b/config/services.yaml
-@@ -22,7 +22,8 @@ services:
-             - '../src/Tests/'
+@@ -23,8 +23,9 @@ services:
  
      App\Controller\LuckyController:
--        arguments:
+         arguments:
 -            $globalMinNumber: 5
-+        arguments: []
+             $logger: '@logger'
+             $luckyNumberGenerator: '@App\Service\LuckyNumberGenerator'
  
      App\Service\LuckyNumberGenerator:
 +        arguments:
 +            $globalMinNumber: 5
 diff --git a/src/Controller/LuckyController.php b/src/Controller/LuckyController.php
-index 496a16c..e0087b5 100644
+index 7e6d3b4..436faff 100644
 --- a/src/Controller/LuckyController.php
 +++ b/src/Controller/LuckyController.php
 @@ -11,13 +11,11 @@ use Symfony\Component\Routing\Annotation\Route;
@@ -22,11 +22,11 @@ index 496a16c..e0087b5 100644
  class LuckyController extends AbstractController
  {
 -    private int $globalMinNumber;
-     private LoggerInterface $logger;
-     private LuckyNumberGenerator $luckyNumberGenerator;
+     private $logger;
+     private $luckyNumberGenerator;
  
--    public function __construct(int $globalMinNumber, LoggerInterface $logger, LuckyNumberGenerator $luckyNumberGenerator)
-+    public function __construct(LoggerInterface $logger, LuckyNumberGenerator $luckyNumberGenerator)
+-    public function __construct(int $globalMinNumber, $logger, $luckyNumberGenerator)
++    public function __construct($logger, $luckyNumberGenerator)
      {
 -        $this->globalMinNumber = $globalMinNumber;
          $this->logger = $logger;
