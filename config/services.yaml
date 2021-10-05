@@ -23,5 +23,3 @@ services:
             - '../src/Kernel.php'
             - '../src/Tests/'
 
-    App\Twig\AppExtension:
-        autoconfigure: true
