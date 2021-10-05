@@ -99,7 +99,37 @@
             "id": "services-pass-global-min-to-construct",
             "name": "Services: Pass global min to construct",
             "description": null
+        },
+        {
+            "id": "services-autowire-luckynumbergenerator",
+            "name": "Services: autowire LuckyNumberGenerator",
+            "description": null
+        },
+        {
+            "id": "services-autowire-logger",
+            "name": "Services: Autowire logger",
+            "description": null
+        },
+        {
+            "id": "services-arguments-bind",
+            "name": "Services: arguments -> bind",
+            "description": null
+        },
+        {
+            "id": "services-bind-to-defaults",
+            "name": "Services: bind to _defaults",
+            "description": null
+        },
+        {
+            "id": "services-remove-2x-services",
+            "name": "Services: remove 2x services",
+            "description": null
+        },
+        {
+            "id": "services-action-injection",
+            "name": "Services: action injection",
+            "description": null
         }
     ],
-    "sha": "c5b802e8ad24d8fe1df4c14d333e3075035a9268"
+    "sha": "73d96c544268fa395acd9091151a4590f4ad9b72"
 }
