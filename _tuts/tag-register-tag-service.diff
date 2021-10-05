@@ -1,0 +1,9 @@
+diff --git a/config/services.yaml b/config/services.yaml
+index 8557e01..159bdc5 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -25,3 +25,4 @@ services:
+ 
+     App\Twig\AppExtension:
+         autoconfigure: false
++        tags: ['twig.extension']
