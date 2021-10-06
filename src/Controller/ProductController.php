@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\Product;
+use App\Service\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -11,23 +12,9 @@ class ProductController extends AbstractController
     /**
      * @Route("/products")
      */
-    public function list()
+    public function list(ProductRepository $productRepository)
     {
-        $projectDir = __DIR__.'/../../';
-        $pdo = new \PDO('sqlite://'.$projectDir.'/var/data.db');
-        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-
-        $results = $pdo->query('SELECT * FROM product')->fetchAll();
-        $products = [];
-        foreach ($results as $result) {
-            $product = new Product();
-            $product->setId($result['id']);
-            $product->setName($result['name']);
-            $product->setPrice($result['price']);
-            $product->setDescription($result['description']);
-
-            $products[] = $product;
-        }
+        $products = $productRepository->findAll();
 
         return $this->render('product/list.html.twig', [
             'products' => $products,
