@@ -17,8 +17,9 @@ class ProductController extends AbstractController
         $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
         $results = $pdo->query('SELECT * FROM product')->fetchAll();
-        dd($results);
 
-        return $this->render('product/list.html.twig');
+        return $this->render('product/list.html.twig', [
+            'products' => $results,
+        ]);
     }
 }
