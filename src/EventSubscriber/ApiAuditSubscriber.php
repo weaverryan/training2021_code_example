@@ -7,9 +7,9 @@ use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class ApiAuditSubscriber implements EventSubscriberInterface
 {
-    public function onKernelRequest()
+    public function onKernelRequest($event)
     {
-        dd('hi!');
+        dump($event);
     }
 
     public static function getSubscribedEvents()
