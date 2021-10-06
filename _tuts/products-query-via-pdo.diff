@@ -1,0 +1,17 @@
+diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
+index b9781dd..9b507f6 100644
+--- a/src/Controller/ProductController.php
++++ b/src/Controller/ProductController.php
+@@ -12,6 +12,12 @@ class ProductController extends AbstractController
+      */
+     public function list()
+     {
++        $pdo = new \PDO('sqlite:///Users/weaverryan/Sites/symfony_training/var/data.db');
++        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
++
++        $results = $pdo->query('SELECT * FROM product')->fetchAll();
++        dd($results);
++
+         return $this->render('product/list.html.twig');
+     }
+ }
