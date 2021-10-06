@@ -1,0 +1,76 @@
+diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
+index 50d1f76..c528a80 100644
+--- a/src/Controller/ProductController.php
++++ b/src/Controller/ProductController.php
+@@ -3,6 +3,7 @@
+ namespace App\Controller;
+ 
+ use App\Model\Product;
++use App\Service\ProductRepository;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\Routing\Annotation\Route;
+ 
+@@ -11,23 +12,9 @@ class ProductController extends AbstractController
+     /**
+      * @Route("/products")
+      */
+-    public function list()
++    public function list(ProductRepository $productRepository)
+     {
+-        $projectDir = __DIR__.'/../../';
+-        $pdo = new \PDO('sqlite://'.$projectDir.'/var/data.db');
+-        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+-
+-        $results = $pdo->query('SELECT * FROM product')->fetchAll();
+-        $products = [];
+-        foreach ($results as $result) {
+-            $product = new Product();
+-            $product->setId($result['id']);
+-            $product->setName($result['name']);
+-            $product->setPrice($result['price']);
+-            $product->setDescription($result['description']);
+-
+-            $products[] = $product;
+-        }
++        $products = $productRepository->findAll();
+ 
+         return $this->render('product/list.html.twig', [
+             'products' => $products,
+diff --git a/src/Service/ProductRepository.php b/src/Service/ProductRepository.php
+new file mode 100644
+index 0000000..7dbed7f
+--- /dev/null
++++ b/src/Service/ProductRepository.php
+@@ -0,0 +1,32 @@
++<?php
++
++namespace App\Service;
++
++use App\Model\Product;
++
++class ProductRepository
++{
++    /**
++     * @return Product[]
++     */
++    public function findAll(): array
++    {
++        $projectDir = __DIR__.'/../../';
++        $pdo = new \PDO('sqlite://'.$projectDir.'/var/data.db');
++        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
++
++        $results = $pdo->query('SELECT * FROM product')->fetchAll();
++        $products = [];
++        foreach ($results as $result) {
++            $product = new Product();
++            $product->setId($result['id']);
++            $product->setName($result['name']);
++            $product->setPrice($result['price']);
++            $product->setDescription($result['description']);
++
++            $products[] = $product;
++        }
++
++        return $products;
++    }
++}
