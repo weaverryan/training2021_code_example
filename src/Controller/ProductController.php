@@ -12,7 +12,7 @@ class ProductController extends AbstractController
      */
     public function list()
     {
-        $projectDir = $this->getParameter('kernel.project_dir');
+        $projectDir = __DIR__.'/../../';
         $pdo = new \PDO('sqlite://'.$projectDir.'/var/data.db');
         $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
