@@ -1,0 +1,16 @@
+diff --git a/src/EventSubscriber/ApiAuditSubscriber.php b/src/EventSubscriber/ApiAuditSubscriber.php
+index 4ede921..a4792c5 100644
+--- a/src/EventSubscriber/ApiAuditSubscriber.php
++++ b/src/EventSubscriber/ApiAuditSubscriber.php
+@@ -7,9 +7,9 @@ use Symfony\Component\HttpKernel\Event\RequestEvent;
+ 
+ class ApiAuditSubscriber implements EventSubscriberInterface
+ {
+-    public function onKernelRequest()
++    public function onKernelRequest($event)
+     {
+-        dd('hi!');
++        dump($event);
+     }
+ 
+     public static function getSubscribedEvents()
