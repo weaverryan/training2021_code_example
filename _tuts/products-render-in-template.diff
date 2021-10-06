@@ -1,0 +1,44 @@
+diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
+index 7703272..9bb9e49 100644
+--- a/src/Controller/ProductController.php
++++ b/src/Controller/ProductController.php
+@@ -17,8 +17,9 @@ class ProductController extends AbstractController
+         $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+ 
+         $results = $pdo->query('SELECT * FROM product')->fetchAll();
+-        dd($results);
+ 
+-        return $this->render('product/list.html.twig');
++        return $this->render('product/list.html.twig', [
++            'products' => $results,
++        ]);
+     }
+ }
+diff --git a/templates/product/list.html.twig b/templates/product/list.html.twig
+index df81821..b7a359f 100644
+--- a/templates/product/list.html.twig
++++ b/templates/product/list.html.twig
+@@ -4,4 +4,23 @@
+ 
+ {% block body %}
+     <h1>Products</h1>
++
++    <table class="table">
++        <thead>
++            <tr>
++                <th>Id</th>
++                <th>Name</th>
++                <th>Price</th>
++            </tr>
++        </thead>
++        <tbody>
++            {% for product in products %}
++                <tr>
++                    <td>{{ product.id }}</td>
++                    <td>{{ product.name }}</td>
++                    <td>{{ product.price }}</td>
++                </tr>
++            {% endfor %}
++        </tbody>
++    </table>
+ {% endblock %}
