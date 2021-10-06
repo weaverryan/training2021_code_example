@@ -2,14 +2,28 @@
 
 namespace App\EventSubscriber;
 
+use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class ApiAuditSubscriber implements EventSubscriberInterface
 {
-    public function onKernelRequest($event)
+    private LoggerInterface $logger;
+
+    public function __construct(LoggerInterface $logger)
     {
-        dump($event);
+        $this->logger = $logger;
+    }
+
+    public function onKernelRequest(RequestEvent $event)
+    {
+        $request = $event->getRequest();
+
+        if (!str_starts_with($request->getPathInfo(), '/api')) {
+            return;
+        }
+
+        $this->logger->info('An API Request!');
     }
 
     public static function getSubscribedEvents()
