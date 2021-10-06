@@ -20,4 +20,14 @@ class ProductController extends AbstractController
             'products' => $products,
         ]);
     }
+
+    /**
+     * @Route("/api/products")
+     */
+    public function getProductsApi(ProductRepository $productRepository)
+    {
+        $products = $productRepository->findAll();
+
+        return $this->json(['data' => $products]);
+    }
 }
