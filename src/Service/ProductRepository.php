@@ -6,16 +6,19 @@ use App\Model\Product;
 
 class ProductRepository
 {
+    private \PDO $pdo;
+
+    public function __construct(\PDO $pdo)
+    {
+        $this->pdo = $pdo;
+    }
+
     /**
      * @return Product[]
      */
     public function findAll(): array
     {
-        $projectDir = __DIR__.'/../../';
-        $pdo = new \PDO('sqlite://'.$projectDir.'/var/data.db');
-        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-
-        $results = $pdo->query('SELECT * FROM product')->fetchAll();
+        $results = $this->pdo->query('SELECT * FROM product')->fetchAll();
         $products = [];
         foreach ($results as $result) {
             $product = new Product();

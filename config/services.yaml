@@ -23,3 +23,10 @@ services:
             - '../src/Kernel.php'
             - '../src/Tests/'
 
+    PDO:
+        class: PDO
+        arguments:
+            - 'sqlite://%kernel.project_dir%/var/data.db'
+        calls:
+            - method: setAttribute
+              arguments: [3, 2]
