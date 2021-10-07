@@ -174,7 +174,72 @@
             "id": "tag-remove-service-entirely",
             "name": "Tag: remove service entirely",
             "description": null
+        },
+        {
+            "id": "products-create-products",
+            "name": "Products: create \/products",
+            "description": null
+        },
+        {
+            "id": "products-query-via-pdo",
+            "name": "Products: query via PDO",
+            "description": null
+        },
+        {
+            "id": "products-use-dir",
+            "name": "Products: use __DIR__",
+            "description": null
+        },
+        {
+            "id": "products-render-in-template",
+            "name": "Products: render in template",
+            "description": null
+        },
+        {
+            "id": "products-create-model-class",
+            "name": "Products: create Model class",
+            "description": null
+        },
+        {
+            "id": "products-hydrate-in-controller",
+            "name": "Products: hydrate in controller",
+            "description": null
+        },
+        {
+            "id": "repo-create-use-repo",
+            "name": "Repo: create & use repo",
+            "description": null
+        },
+        {
+            "id": "repo-register-pdo-service",
+            "name": "Repo: register PDO service",
+            "description": null
+        },
+        {
+            "id": "api-api-products-with-json",
+            "name": "API: \/api\/products with ->json()",
+            "description": null
+        },
+        {
+            "id": "api-install-serializer",
+            "name": "API: install serializer",
+            "description": null
+        },
+        {
+            "id": "subscriber-apiauditsubscriber",
+            "name": "Subscriber: ApiAuditSubscriber",
+            "description": null
+        },
+        {
+            "id": "subscriber-dump-event",
+            "name": "Subscriber: dump $event",
+            "description": null
+        },
+        {
+            "id": "subscriber-log-for-api",
+            "name": "Subscriber: log for \/api",
+            "description": null
         }
     ],
-    "sha": "d8f3ad923dfeff7af8d91a9c0a534504c7d07b1a"
+    "sha": "1d4ccd74393512caef29cfd8c2db3759902594f7"
 }
