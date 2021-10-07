@@ -1,0 +1,27 @@
+diff --git a/src/EventSubscriber/ApiAuditSubscriber.php b/src/EventSubscriber/ApiAuditSubscriber.php
+new file mode 100644
+index 0000000..4ede921
+--- /dev/null
++++ b/src/EventSubscriber/ApiAuditSubscriber.php
+@@ -0,0 +1,21 @@
++<?php
++
++namespace App\EventSubscriber;
++
++use Symfony\Component\EventDispatcher\EventSubscriberInterface;
++use Symfony\Component\HttpKernel\Event\RequestEvent;
++
++class ApiAuditSubscriber implements EventSubscriberInterface
++{
++    public function onKernelRequest()
++    {
++        dd('hi!');
++    }
++
++    public static function getSubscribedEvents()
++    {
++        return [
++            RequestEvent::class => 'onKernelRequest',
++        ];
++    }
++}
