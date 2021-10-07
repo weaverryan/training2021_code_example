@@ -1,0 +1,35 @@
+diff --git a/src/EventSubscriber/ApiAuditSubscriber.php b/src/EventSubscriber/ApiAuditSubscriber.php
+index a4792c5..9b81ede 100644
+--- a/src/EventSubscriber/ApiAuditSubscriber.php
++++ b/src/EventSubscriber/ApiAuditSubscriber.php
+@@ -2,14 +2,28 @@
+ 
+ namespace App\EventSubscriber;
+ 
++use Psr\Log\LoggerInterface;
+ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+ use Symfony\Component\HttpKernel\Event\RequestEvent;
+ 
+ class ApiAuditSubscriber implements EventSubscriberInterface
+ {
+-    public function onKernelRequest($event)
++    private LoggerInterface $logger;
++
++    public function __construct(LoggerInterface $logger)
++    {
++        $this->logger = $logger;
++    }
++
++    public function onKernelRequest(RequestEvent $event)
+     {
+-        dump($event);
++        $request = $event->getRequest();
++
++        if (!str_starts_with($request->getPathInfo(), '/api')) {
++            return;
++        }
++
++        $this->logger->info('An API Request!');
+     }
+ 
+     public static function getSubscribedEvents()
