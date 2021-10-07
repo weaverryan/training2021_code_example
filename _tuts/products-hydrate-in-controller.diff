@@ -1,0 +1,33 @@
+diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
+index 9bb9e49..50d1f76 100644
+--- a/src/Controller/ProductController.php
++++ b/src/Controller/ProductController.php
+@@ -2,6 +2,7 @@
+ 
+ namespace App\Controller;
+ 
++use App\Model\Product;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\Routing\Annotation\Route;
+ 
+@@ -17,9 +18,19 @@ class ProductController extends AbstractController
+         $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+ 
+         $results = $pdo->query('SELECT * FROM product')->fetchAll();
++        $products = [];
++        foreach ($results as $result) {
++            $product = new Product();
++            $product->setId($result['id']);
++            $product->setName($result['name']);
++            $product->setPrice($result['price']);
++            $product->setDescription($result['description']);
++
++            $products[] = $product;
++        }
+ 
+         return $this->render('product/list.html.twig', [
+-            'products' => $results,
++            'products' => $products,
+         ]);
+     }
+ }

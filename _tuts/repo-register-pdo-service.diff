@@ -1,0 +1,44 @@
+diff --git a/config/services.yaml b/config/services.yaml
+index a92c061..b5b09cf 100644
+--- a/config/services.yaml
++++ b/config/services.yaml
+@@ -23,3 +23,10 @@ services:
+             - '../src/Kernel.php'
+             - '../src/Tests/'
+ 
++    PDO:
++        class: PDO
++        arguments:
++            - 'sqlite://%kernel.project_dir%/var/data.db'
++        calls:
++            - method: setAttribute
++              arguments: [3, 2]
+diff --git a/src/Service/ProductRepository.php b/src/Service/ProductRepository.php
+index 7dbed7f..47f8c73 100644
+--- a/src/Service/ProductRepository.php
++++ b/src/Service/ProductRepository.php
+@@ -6,16 +6,19 @@ use App\Model\Product;
+ 
+ class ProductRepository
+ {
++    private \PDO $pdo;
++
++    public function __construct(\PDO $pdo)
++    {
++        $this->pdo = $pdo;
++    }
++
+     /**
+      * @return Product[]
+      */
+     public function findAll(): array
+     {
+-        $projectDir = __DIR__.'/../../';
+-        $pdo = new \PDO('sqlite://'.$projectDir.'/var/data.db');
+-        $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+-
+-        $results = $pdo->query('SELECT * FROM product')->fetchAll();
++        $results = $this->pdo->query('SELECT * FROM product')->fetchAll();
+         $products = [];
+         foreach ($results as $result) {
+             $product = new Product();
