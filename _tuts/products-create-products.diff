@@ -1,0 +1,36 @@
+diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
+new file mode 100644
+index 0000000..b9781dd
+--- /dev/null
++++ b/src/Controller/ProductController.php
+@@ -0,0 +1,17 @@
++<?php
++
++namespace App\Controller;
++
++use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
++use Symfony\Component\Routing\Annotation\Route;
++
++class ProductController extends AbstractController
++{
++    /**
++     * @Route("/products")
++     */
++    public function list()
++    {
++        return $this->render('product/list.html.twig');
++    }
++}
+diff --git a/templates/product/list.html.twig b/templates/product/list.html.twig
+new file mode 100644
+index 0000000..df81821
+--- /dev/null
++++ b/templates/product/list.html.twig
+@@ -0,0 +1,7 @@
++{% extends 'base.html.twig' %}
++
++{% block title %}Products{% endblock %}
++
++{% block body %}
++    <h1>Products</h1>
++{% endblock %}
