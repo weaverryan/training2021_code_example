@@ -239,7 +239,92 @@
             "id": "subscriber-log-for-api",
             "name": "Subscriber: log for \/api",
             "description": null
+        },
+        {
+            "id": "authentication-install-maker",
+            "name": "Authentication: Install Maker",
+            "description": null
+        },
+        {
+            "id": "authentication-create-logincontroller",
+            "name": "Authentication: create LoginController",
+            "description": null
+        },
+        {
+            "id": "authentication-install-security",
+            "name": "Authentication: install security",
+            "description": null
+        },
+        {
+            "id": "authentication-make-user",
+            "name": "Authentication: make:user",
+            "description": null
+        },
+        {
+            "id": "authentication-add-user-name",
+            "name": "Authentication: add User.name",
+            "description": null
+        },
+        {
+            "id": "authentication-use-old-security",
+            "name": "Authentication: use old security",
+            "description": null
+        },
+        {
+            "id": "authentication-blank-authenticator",
+            "name": "Authentication: blank authenticator",
+            "description": null
+        },
+        {
+            "id": "authentication-supports",
+            "name": "Authentication: supports()",
+            "description": null
+        },
+        {
+            "id": "authentication-getcredentials",
+            "name": "Authentication: getCredentials()",
+            "description": null
+        },
+        {
+            "id": "authentication-getuser",
+            "name": "Authentication: getUser()",
+            "description": null
+        },
+        {
+            "id": "authentication-checkcredentials",
+            "name": "Authentication: checkCredentials()",
+            "description": null
+        },
+        {
+            "id": "authentication-onauthsuccess",
+            "name": "Authentication: onAuthSuccess",
+            "description": null
+        },
+        {
+            "id": "authentication-user-provider",
+            "name": "Authentication: user provider",
+            "description": null
+        },
+        {
+            "id": "voter-use-in-controller",
+            "name": "Voter: use in controller",
+            "description": null
+        },
+        {
+            "id": "voter-make-voter",
+            "name": "Voter: make:voter",
+            "description": null
+        },
+        {
+            "id": "voter-supports",
+            "name": "Voter: supports()",
+            "description": null
+        },
+        {
+            "id": "voter-voteonattribute",
+            "name": "Voter: voteOnAttribute()",
+            "description": null
         }
     ],
-    "sha": "1d4ccd74393512caef29cfd8c2db3759902594f7"
+    "sha": "bdc62721b989ec0513b522a2174f422a6fcc5e2f"
 }
