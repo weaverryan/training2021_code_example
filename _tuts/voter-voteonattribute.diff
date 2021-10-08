@@ -1,0 +1,29 @@
+diff --git a/src/Security/Voter/LuckyNumberVoter.php b/src/Security/Voter/LuckyNumberVoter.php
+index dc3c97c..4c6b942 100644
+--- a/src/Security/Voter/LuckyNumberVoter.php
++++ b/src/Security/Voter/LuckyNumberVoter.php
+@@ -17,7 +17,6 @@ class LuckyNumberVoter extends Voter
+ 
+     protected function voteOnAttribute(string $attribute, $subject, TokenInterface $token): bool
+     {
+-        dd($subject);
+         $user = $token->getUser();
+         // if the user is anonymous, do not grant access
+         if (!$user instanceof UserInterface) {
+@@ -26,14 +25,8 @@ class LuckyNumberVoter extends Voter
+ 
+         // ... (check conditions and return true to grant permission) ...
+         switch ($attribute) {
+-            case 'POST_EDIT':
+-                // logic to determine if the user can EDIT
+-                // return true or false
+-                break;
+-            case 'POST_VIEW':
+-                // logic to determine if the user can VIEW
+-                // return true or false
+-                break;
++            case 'VIEW':
++                return $subject < 100;
+         }
+ 
+         return false;
