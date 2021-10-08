@@ -35,7 +35,7 @@ class SimpleSSOAuthenticator extends AbstractGuardAuthenticator
 
     public function checkCredentials($credentials, UserInterface $user)
     {
-        dd('check credentials');
+        return true;
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
