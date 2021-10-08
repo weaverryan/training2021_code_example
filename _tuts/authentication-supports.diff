@@ -1,0 +1,19 @@
+diff --git a/src/Security/SimpleSSOAuthenticator.php b/src/Security/SimpleSSOAuthenticator.php
+index 06953dc..1d904f5 100644
+--- a/src/Security/SimpleSSOAuthenticator.php
++++ b/src/Security/SimpleSSOAuthenticator.php
+@@ -13,12 +13,12 @@ class SimpleSSOAuthenticator extends AbstractGuardAuthenticator
+ {
+     public function supports(Request $request)
+     {
+-        // todo
++        return $request->attributes->get('_route') === 'app_login_check';
+     }
+ 
+     public function getCredentials(Request $request)
+     {
+-        // todo
++        dd('credentials');
+     }
+ 
+     public function getUser($credentials, UserProviderInterface $userProvider)
