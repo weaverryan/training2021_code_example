@@ -1,0 +1,19 @@
+diff --git a/src/Security/Voter/LuckyNumberVoter.php b/src/Security/Voter/LuckyNumberVoter.php
+index 3a9f070..dc3c97c 100644
+--- a/src/Security/Voter/LuckyNumberVoter.php
++++ b/src/Security/Voter/LuckyNumberVoter.php
+@@ -12,12 +12,12 @@ class LuckyNumberVoter extends Voter
+     {
+         // replace with your own logic
+         // https://symfony.com/doc/current/security/voters.html
+-        return in_array($attribute, ['POST_EDIT', 'POST_VIEW'])
+-            && $subject instanceof \App\Entity\LuckyNumber;
++        return in_array($attribute, ['VIEW']);
+     }
+ 
+     protected function voteOnAttribute(string $attribute, $subject, TokenInterface $token): bool
+     {
++        dd($subject);
+         $user = $token->getUser();
+         // if the user is anonymous, do not grant access
+         if (!$user instanceof UserInterface) {
