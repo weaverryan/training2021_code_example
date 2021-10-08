@@ -23,6 +23,8 @@ class LuckyController extends AbstractController
      */
     public function number(LoggerInterface $logger, $max = 100): Response
     {
+        $this->denyAccessUnlessGranted('VIEW', $max);
+
         $number = $this->luckyNumberGenerator->getRandomNumber($max);
 
         $logger->info('Generating a lucky number: {number}', [
