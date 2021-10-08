@@ -2,7 +2,9 @@
 
 namespace App\Security;
 
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -11,6 +13,13 @@ use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
 
 class SimpleSSOAuthenticator extends AbstractGuardAuthenticator
 {
+    private RouterInterface $router;
+
+    public function __construct(RouterInterface $router)
+    {
+        $this->router = $router;
+    }
+
     public function supports(Request $request)
     {
         return $request->attributes->get('_route') === 'app_login_check';
@@ -45,7 +54,9 @@ class SimpleSSOAuthenticator extends AbstractGuardAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey)
     {
-        // todo
+        $url = $this->router->generate('app_product_list');
+
+        return new RedirectResponse($url);
     }
 
     public function start(Request $request, AuthenticationException $authException = null)
