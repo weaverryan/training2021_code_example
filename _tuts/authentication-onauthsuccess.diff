@@ -1,0 +1,52 @@
+diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
+index cbaea7c..c49f95d 100644
+--- a/src/Controller/ProductController.php
++++ b/src/Controller/ProductController.php
+@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
+ class ProductController extends AbstractController
+ {
+     /**
+-     * @Route("/products")
++     * @Route("/products", name="app_product_list")
+      */
+     public function list(ProductRepository $productRepository)
+     {
+diff --git a/src/Security/SimpleSSOAuthenticator.php b/src/Security/SimpleSSOAuthenticator.php
+index b3fb792..d89f929 100644
+--- a/src/Security/SimpleSSOAuthenticator.php
++++ b/src/Security/SimpleSSOAuthenticator.php
+@@ -2,7 +2,9 @@
+ 
+ namespace App\Security;
+ 
++use Symfony\Component\HttpFoundation\RedirectResponse;
+ use Symfony\Component\HttpFoundation\Request;
++use Symfony\Component\Routing\RouterInterface;
+ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+ use Symfony\Component\Security\Core\Exception\AuthenticationException;
+ use Symfony\Component\Security\Core\User\UserInterface;
+@@ -11,6 +13,13 @@ use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
+ 
+ class SimpleSSOAuthenticator extends AbstractGuardAuthenticator
+ {
++    private RouterInterface $router;
++
++    public function __construct(RouterInterface $router)
++    {
++        $this->router = $router;
++    }
++
+     public function supports(Request $request)
+     {
+         return $request->attributes->get('_route') === 'app_login_check';
+@@ -45,7 +54,9 @@ class SimpleSSOAuthenticator extends AbstractGuardAuthenticator
+ 
+     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey)
+     {
+-        // todo
++        $url = $this->router->generate('app_product_list');
++
++        return new RedirectResponse($url);
+     }
+ 
+     public function start(Request $request, AuthenticationException $authException = null)
