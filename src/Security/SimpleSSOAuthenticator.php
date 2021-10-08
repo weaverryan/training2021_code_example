@@ -26,7 +26,8 @@ class SimpleSSOAuthenticator extends AbstractGuardAuthenticator
 
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        dd($credentials);
+        $user = new User();
+        $user->setEmail($credentials['email']);
     }
 
     public function checkCredentials($credentials, UserInterface $user)
