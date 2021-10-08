@@ -1,0 +1,23 @@
+diff --git a/src/Security/SimpleSSOAuthenticator.php b/src/Security/SimpleSSOAuthenticator.php
+index 586f8b0..832b7d2 100644
+--- a/src/Security/SimpleSSOAuthenticator.php
++++ b/src/Security/SimpleSSOAuthenticator.php
+@@ -26,12 +26,16 @@ class SimpleSSOAuthenticator extends AbstractGuardAuthenticator
+ 
+     public function getUser($credentials, UserProviderInterface $userProvider)
+     {
+-        dd($credentials);
++        $user = new User();
++        $user->setEmail($credentials['email']);
++        $user->setName($credentials['name']);
++
++        return $user;
+     }
+ 
+     public function checkCredentials($credentials, UserInterface $user)
+     {
+-        // todo
++        dd('check credentials');
+     }
+ 
+     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
