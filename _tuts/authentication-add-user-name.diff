@@ -1,0 +1,28 @@
+diff --git a/src/Security/User.php b/src/Security/User.php
+index 029a1a7..5c37741 100644
+--- a/src/Security/User.php
++++ b/src/Security/User.php
+@@ -11,6 +11,8 @@ class User implements UserInterface
+ 
+     private $roles = [];
+ 
++    private $name;
++
+     public function getEmail(): ?string
+     {
+         return $this->email;
+@@ -88,4 +90,14 @@ class User implements UserInterface
+         // If you store any temporary, sensitive data on the user, clear it here
+         // $this->plainPassword = null;
+     }
++
++    public function getName()
++    {
++        return $this->name;
++    }
++
++    public function setName($name)
++    {
++        $this->name = $name;
++    }
+ }
