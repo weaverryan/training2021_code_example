@@ -12,8 +12,7 @@ class LuckyNumberVoter extends Voter
     {
         // replace with your own logic
         // https://symfony.com/doc/current/security/voters.html
-        return in_array($attribute, ['POST_EDIT', 'POST_VIEW'])
-            && $subject instanceof \App\Entity\LuckyNumber;
+        return in_array($attribute, ['VIEW']);
     }
 
     protected function voteOnAttribute(string $attribute, $subject, TokenInterface $token): bool
