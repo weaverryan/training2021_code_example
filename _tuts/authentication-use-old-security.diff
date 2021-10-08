@@ -1,0 +1,20 @@
+diff --git a/config/packages/security.yaml b/config/packages/security.yaml
+index 1ba67a0..ffa7cc2 100644
+--- a/config/packages/security.yaml
++++ b/config/packages/security.yaml
+@@ -1,6 +1,6 @@
+ security:
+     # https://symfony.com/doc/current/security/authenticator_manager.html
+-    enable_authenticator_manager: true
++    enable_authenticator_manager: false
+     # https://symfony.com/doc/current/security.html#c-hashing-passwords
+     password_hashers:
+         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+@@ -16,6 +16,7 @@ security:
+         main:
+             lazy: true
+             provider: app_user_provider
++            anonymous: true
+ 
+             # activate different ways to authenticate
+             # https://symfony.com/doc/current/security.html#firewalls-authentication
