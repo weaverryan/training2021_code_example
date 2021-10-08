@@ -13,12 +13,12 @@ class SimpleSSOAuthenticator extends AbstractGuardAuthenticator
 {
     public function supports(Request $request)
     {
-        // todo
+        return $request->attributes->get('_route') === 'app_login_check';
     }
 
     public function getCredentials(Request $request)
     {
-        // todo
+        dd('credentials');
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider)
